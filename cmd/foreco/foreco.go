@@ -326,8 +326,8 @@ func help() {
 	fmt.Fprintln(w, "\tvegan\tRecommend random vegan food.")
 	fmt.Fprintln(w, "")
 	fmt.Fprintln(w, "OPTIONS:")
-	fmt.Fprintln(w, "\t-h, --help\tShow this help message")
-	fmt.Fprintln(w, "\t-V, --version\tShow version information")
+	fmt.Fprintln(w, "\t-h, --help\tShow this help message.")
+	fmt.Fprintln(w, "\t-V, --version\tShow version information.")
 
 	w.Flush()
 }
