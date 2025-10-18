@@ -1,5 +1,7 @@
 builds:
-  - env:
+  - main: ./cmd/foreco
+    binary: foreco
+    env:
       - CGO_ENABLED=0
     ldflags:
       - -X 'main.ProgramVersion={{.Version}}'
@@ -34,4 +36,4 @@ brews:
     license: "MIT"
 
     install: |
-      bin.install "cvtr"
+      bin.install "foreco"
