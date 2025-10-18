@@ -25,12 +25,12 @@ brews:
   -
     repository:
       owner: chebread
-      name: homebrew-cvtr
+      name: homebrew-foreco
       branch: master
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
 
     homepage: "https://github.com/chebread/cvtr"
-    description: "A dead simple currency tool for your terminal."
+    description: "Food recommender."
     license: "MIT"
 
     install: |
