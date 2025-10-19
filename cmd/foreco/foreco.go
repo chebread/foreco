@@ -11,19 +11,19 @@ import (
 	"github.com/chebread/foreco/internal/lib"
 )
 
-// foreco는 음식 추천기임.
-// map 공부하기
-// kong pkg 공부하기 -> 일단 os.Args로 구현함
+// INFO: 이 프로젝트를 통해 map 공부함.
+// TODO: struct 배워서 kong pkg로 구현하기 -> 일단 os.Args로 구현함
 
-// subcommand: brew install 이나 git commit 처럼 메인 명령어 뒤에 따라오는 추가적인 명령어는 서브커맨드(Subcommand)라고 부름.
-// 프로그램이 제공하는 여러 기능 중 어떤 기능을 실행할지 결정함. 마치 하나의 프로그램 안에 여러 개의 작은 프로그램이 있는 것과 같음.
-
-// flag, option: 하이픈으로 시작하는 인자는 플래그(Flag) 또는 옵션(Option)이라고 부름.
-// 명령어의 동작 방식을 바꾸거나 추가 정보를 제공하는 역할을 함.
+// INFO: subcommand vs flag
+// - subcommand: brew install 이나 git commit 처럼 메인 명령어 뒤에 따라오는 추가적인 명령어는 서브커맨드(Subcommand)라고 부름.
+// 	 프로그램이 제공하는 여러 기능 중 어떤 기능을 실행할지 결정함. 마치 하나의 프로그램 안에 여러 개의 작은 프로그램이 있는 것과 같음.
+// - flag, option: 하이픈으로 시작하는 인자는 플래그(Flag) 또는 옵션(Option)이라고 부름.
+//   명령어의 동작 방식을 바꾸거나 추가 정보를 제공하는 역할을 함.
 
 var ProgramName = os.Args[0]
 var ProgramVersion string = "development"
 
+// TODO: interface 배워서 map value로 여러 type 쓰게 하자.
 var foods = map[string][]string{
 	"korean": db.KoreanFoods,
 	"vegan":  db.VeganFoods,
@@ -100,6 +100,8 @@ func main() {
 }
 
 func help() {
+	// INFO: LLM을 통해 구현함.
+	// TODO: 이해 필요함.
 	w := tabwriter.NewWriter(os.Stdout, 0, 10, 2, ' ', 0)
 
 	fmt.Fprintf(w, "%s is food recommender.\n", ProgramName)
