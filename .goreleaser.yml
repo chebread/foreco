@@ -31,7 +31,7 @@ brews:
       branch: master
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
 
-    homepage: "https://github.com/chebread/cvtr"
+    homepage: "https://github.com/chebread/foreco"
     description: "Food recommender."
     license: "MIT"
 

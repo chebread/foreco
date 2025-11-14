@@ -38,6 +38,7 @@ func main() {
 	// 방어 코드
 	if len(os.Args) < 2 {
 		// os.Args is []string
+		// TODO: function을 배워서 이 부분을 의미론적으로 분립하자.
 		var allFoods []string                              // nil slice도 append가 가능함.
 		var koreanFoodsToAppend []string = foods["korean"] // 1...100
 		var veganFoodsToAppend []string = foods["vegan"]   // 1...50
@@ -61,7 +62,9 @@ func main() {
 		return
 	}
 
-	// 방어 코드를 사용했기 때문에 여기서 부터는 len(os.Args) >= 2임.
+	// 방어 코드를 사용했기 때문에
+	// 여기서 부터는 len(os.Args) >= 2임.
+	// 즉, 마음 편하게 os.Args[1]에 접근해도 됨.
 
 	// flag
 	// 방어 코드
