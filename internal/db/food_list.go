@@ -1,5 +1,7 @@
 package db
 
+// TODO: 이거를 Json으로 저장하고 그 json을 읽어오면?
+
 var KoreanFoods = []string{
 	// 배달 및 외식 메뉴
 	"치킨",

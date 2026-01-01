@@ -5,11 +5,13 @@ import (
 	"math/rand"
 	"os"
 	"strings"
-	"text/tabwriter"
 
 	"github.com/chebread/foreco/internal/db"
-	"github.com/chebread/foreco/internal/lib"
+	"github.com/fatih/color"
 )
+
+var BoldCyanPrintf = color.New(color.FgCyan, color.Bold).PrintfFunc()
+var RedCyanPrintf = color.New(color.FgRed, color.Bold).PrintfFunc()
 
 // INFO: 이 프로젝트를 통해 map 공부함.
 // TODO: struct 배워서 kong pkg로 구현하기 -> 일단 os.Args로 구현함
@@ -23,7 +25,6 @@ import (
 var ProgramName = os.Args[0]
 var ProgramVersion string = "development"
 
-// TODO: interface 배워서 map value로 여러 type 쓰게 하자.
 var foods = map[string][]string{
 	"korean": db.KoreanFoods,
 	"vegan":  db.VeganFoods,
@@ -57,7 +58,7 @@ func main() {
 			category = "비건"
 		}
 
-		lib.BoldCyanPrintf("%s: %s\n", category, food)
+		BoldCyanPrintf("%s: %s\n", category, food)
 
 		return
 	}
@@ -75,11 +76,10 @@ func main() {
 
 		switch flagVal {
 		case "help", "h":
-			help()
 		case "version", "V":
 			version()
 		default:
-			lib.RedCyanPrintf("Error: '%s' you entered is not supported\n", flagVal)
+			RedCyanPrintf("Error: '%s' you entered is not supported\n", flagVal)
 		}
 
 		return
@@ -91,7 +91,7 @@ func main() {
 	var _, ok = foods[inputedFood]
 	// 방어 코드
 	if !ok {
-		lib.RedCyanPrintf("Error: '%s' you entered is not in the category\n", inputedFood)
+		RedCyanPrintf("Error: '%s' you entered is not in the category\n", inputedFood)
 		return
 	}
 
@@ -99,29 +99,7 @@ func main() {
 	var food string = foods[inputedFood][randOffset]
 	var category string = categories[inputedFood]
 
-	lib.BoldCyanPrintf("%s: %s\n", category, food)
-}
-
-func help() {
-	// INFO: LLM을 통해 구현함.
-	// TODO: 이해 필요함.
-	w := tabwriter.NewWriter(os.Stdout, 0, 10, 2, ' ', 0)
-
-	fmt.Fprintf(w, "%s is food recommender.\n", ProgramName)
-	fmt.Fprintln(w, "")
-	fmt.Fprintln(w, "USAGE:")
-	fmt.Fprintf(w, "\t%s [OPTIONS] [ARGUMENTS]...\n", ProgramName)
-	fmt.Fprintln(w, "")
-	fmt.Fprintln(w, "ARGUMENTS:")
-	fmt.Fprintln(w, "\t<none>\tRecommend a random food.")
-	fmt.Fprintln(w, "\tkorean\tRecommend random Korean food.")
-	fmt.Fprintln(w, "\tvegan\tRecommend random vegan food.")
-	fmt.Fprintln(w, "")
-	fmt.Fprintln(w, "OPTIONS:")
-	fmt.Fprintln(w, "\t-h, --help\tShow this help message.")
-	fmt.Fprintln(w, "\t-V, --version\tShow version information.")
-
-	w.Flush()
+	BoldCyanPrintf("%s: %s\n", category, food)
 }
 
 func version() {

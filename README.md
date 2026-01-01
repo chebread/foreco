@@ -1,11 +1,6 @@
 # foreco
 `foreco` is a program that recommends foods for you.
 
-## Learning Go
-This project is designed to help me learn this area of TGPL.
-- Map
-- github.com/alecthomas/kong
-
 ## Feature
 
 ### Arguments
@@ -33,4 +28,4 @@ brew install foreco
 ```
 
 ## License
-MIT LICENSE &copy; 2025 Cha Haneum
+MIT LICENSE &copy; 2025-2026 Cha Haneum
